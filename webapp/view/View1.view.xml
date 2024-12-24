@@ -1,0 +1,304 @@
+<mvc:View controllerName="PP.zdenimpacking.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" 
+    xmlns:f="sap.ui.layout.form" 
+    xmlns:smarttable="sap.ui.comp.smarttable"
+    xmlns:smartfilterbar="sap.ui.comp.smartfilterbar" 
+    xmlns:table="sap.ui.table" 
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    width="100%" >
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <f:SimpleForm id="fSimpleForm1"  layout="ResponsiveGridLayout" columnsL="4" editable="true">
+                    <f:content>
+                        <core:Title id="title1"/>
+                        <Label id="aa3" text="Supplier Code"/>
+                        <ComboBox items="{path : '/Supplier',length : '100000'}" width="150px" showSecondaryValues="true" change="operatorname"   id="Supplier" >
+                            <items>
+                                <core:ListItem id="al13" text="{Supplier}" key="{Supplier}" additionalText="{SupplierName}"/>
+                            </items>
+                        </ComboBox>
+                        <Label id="a19" text="Batch"/>
+                        <Input id="idDel1" value="" maxLength="10"  required="true" />
+                        <Button id="bt3" text="Go" press="onReadbatchtable"  />
+                        <Label id="a1" text="Plant" required="true" />
+                        <Input id="plant"  value="{oCommonModel>/plant}" maxLength="4" editable="true"/>
+                        <Label id="a2" text="Storage Location"/>
+                        <ComboBox   width="150px" selectedKey="INS1" showSecondaryValues="true" id="sloc"  change="strogaelocation" >
+                            <items>
+                                <!-- <core:ListItem text="{StorageLocation}" key="{StorageLocation}" additionalText="{StorageLocationName}"/> -->
+                                <core:ListItem id="l1" text="DY01" key="DY01" additionalText="Dyeing Location" />
+                                <core:ListItem id="l2" text="FG01" key="FG01" additionalText="Finished Godown" />
+                                <core:ListItem id="l3" text="FN01" key="FN01" additionalText="Finish Section" />
+                                <core:ListItem id="l4" text="INS1" key="INS1" additionalText="Insp. and Rolling"/>
+                                <core:ListItem id="l5" text="PH01" key="PH01" additionalText="Processing Locat"/>
+                                <core:ListItem id="l6" text="PSUB" key="PSUB" additionalText="Sub Store"/>
+                                <core:ListItem id="l7" text="QA01" key="QA01" additionalText="QA Lab/Sampling"/>
+                                <core:ListItem id="l8" text="RW01" key="RW01" additionalText="Re-Winding" />
+                                <core:ListItem id="l9" text="ST01" key="ST01"  additionalText="Store"/>
+                                <core:ListItem id="l10" text="WRP1" key="WRP1"  additionalText="Warping Section"/>
+                                <core:ListItem id="l11" text="WST1" key="WST1" additionalText="Waste Location"/>
+                                <core:ListItem id="l12" text="YRM1" key="YRM1" additionalText="Yarn Godown"/>
+                            </items>
+                        </ComboBox>
+                        <Label id="a3" text="Opeartor Name"/>
+                        <ComboBox items="{/operator_data}" width="150px" showSecondaryValues="true" change="operatorname"   id="opname" >
+                            <items>
+                                <core:ListItem id="l13" text="{Empname}" key="{Empname}" additionalText="{Deptname}"/>
+                            </items>
+                        </ComboBox>
+                        <Label id="a4" text="Material Number"/>
+                        <Input id="matn"  value="{oCommonModel1>/material}" width="150px" editable="false" />
+                        <Label id="a5" text="Meter"/>
+                        <Input id="metr" value="{oCommonModel7>/meter}"  width="150px" maxLength="8" editable="false"/>
+                        <Label id="a6" text="Finish Width"/>
+                        <Input id="FWDTH" width="150px"  submit="finishwidth" maxLength="7" />
+                        <Label id="a7" text="Shift"/>
+                         <ComboBox id="sln"  width="150px" change="Shift" showButton="true">
+                            <items>
+                                <core:ListItem id="l14" text="A" key="A" />
+                                <core:ListItem  id="l15" text="B" key="B" />
+                                <core:ListItem id="l16" text="C" key="C" />
+                            </items>
+                        </ComboBox>
+                        <Label id="a8" text="Folio Number"/>
+                        <Input id="FNO" width="150px"  maxLength="10"/>      
+                        <Label id="a9" text="4 Point"/>
+                        <Input id="flag"  width="150px" maxLength="2"/>
+                        <core:Title id="tiltle3"/>
+                        <Label id="a11" text=" Posting Date" required="true" />
+                        <DatePicker placeholder="Enter Date" width="150px" id="date" valueFormat="yyyy-MM-dd" displayFormat="yyyy-MM-dd" value="{oDateModel>/dDefaultDate}" editable="true" />
+                        <Label id="a12" text="Receiving SLoc."/>
+                        <!-- <Input id="rloc" editable="false"  width="150px"/>  -->
+                        <ComboBox  width="150px" selectedKey="FG01" showSecondaryValues="true" editable="false" id="rloc"  change="reclocation">
+                            <items>
+                                
+                                <core:ListItem id="l17" text="DY01" key="DY01" additionalText="Dyeing Location" />
+                                <core:ListItem id="l18" text="FG01" key="FG01" additionalText="Finished Godown" />
+                                <core:ListItem id="l19" text="FN01" key="FN01" additionalText="Finish Section" />
+                                <core:ListItem id="l20" text="INS1" key="INS1" additionalText="Insp. and Rolling"/>
+                                <core:ListItem id="l21" text="PH01" key="PH01" additionalText="Processing Locat"/>
+                                <core:ListItem id="l22" text="PSUB" key="PSUB" additionalText="Sub Store"/>
+                                <core:ListItem id="l23" text="QA01" key="QA01" additionalText="QA Lab/Sampling"/>
+                                <core:ListItem id="l24" text="RW01" key="RW01" additionalText="Re-Winding" />
+                                <core:ListItem id="l25" text="ST01" key="ST01"  additionalText="Store"/>
+                                <core:ListItem id="l26" text="WRP1" key="WRP1"  additionalText="Warping Section"/>
+                                <core:ListItem id="l27" text="WST1" key="WST1" additionalText="Waste Location"/>
+                                <core:ListItem id="l28" text="YRM1" key="YRM1" additionalText="Yarn Godown"/>
+                                <core:ListItem id="1129" text="FRC1" key="FRC1" additionalText="FRC1"/>
+                            </items>
+                        </ComboBox>
+                        <Label id="a13" text="Pack Grade"/>
+                        <!-- <Input id="Pacg" width="150px" maxLength="2"/> -->
+                        <ComboBox items="{path : '/grading_table',length : '100000'}" width="150px" change="packgrade" showSecondaryValues="true" id="Pacg" >
+                            <items>
+                                <core:ListItem id="l29" text="{Grade}" key="{Grade}" additionalText="{Zdesc}"/>
+                            </items>
+                        </ComboBox>
+                        <Label id="a14" text="Material Desc."/>
+                        <Input id="matdesc"  width="150px" editable="false" />
+                        <Label id="a15" text="Re Grading"/>
+                        <CheckBox id="re-gra" width="10px"/>
+                        <!-- <Label text="No Of TP" required="true"/>
+                        <Input id="notp" width="150px" maxLength="2" submit="addTableData1" /> -->
+                         <Label id="a16" text="Ins. MC.NO."/>
+                         <!-- <Input id="Imn"  width="150px" maxLength="2"/> -->
+                          <ComboBox  width="150px" showSecondaryValues="true" id="Imn"  change="machineno">
+                            <items>
+                                <!-- <core:ListItem text="{StorageLocation}" key="{StorageLocation}" additionalText="{StorageLocationName}"/> -->
+                                <core:ListItem id="l30" text="01" key="01" additionalText="Machine NO.01" />
+                                <core:ListItem id="l31" text="02" key="02" additionalText="Machine NO.02" />
+                                <core:ListItem id="l32" text="03" key="03" additionalText="Machine NO.03" />
+                                <core:ListItem id="l33" text="04" key="04" additionalText="Machine NO.04"/>
+                                <core:ListItem id="l34" text="05" key="05" additionalText="Machine NO.05"/>
+                                <core:ListItem id="l35" text="06" key="06" additionalText="Machine NO.06"/>
+                                <core:ListItem id="l36" text="07" key="07" additionalText="Machine NO.07"/>
+                                <core:ListItem id="l37" text="08" key="08" additionalText="Machine NO.08"/>
+                                <core:ListItem id="l38" text="09" key="09" additionalText="Machine NO.09"/>
+
+                            </items>
+                        </ComboBox>
+                        <!-- <Label text="New Batch" required="true" />
+                        <Input id="Newbatch" width="150px" maxLength="10" /> -->
+                        <Label id="a17" text="Gross Weight"/>
+                        <Input id="grw" width="150px"  submit="netweight" maxLength="8"/>
+                         <Label id="a18" text="Net Weight"/>
+                        <Input id="netweig" width="150px" editable="false"  maxLength="8"/> 
+                        <Label id="a10" text="Total Point"/>
+                        <Input id="flagqty" width="150px" maxLength="5"/>
+                        
+                        <core:Title id="tile3"/>
+                        <Label id="a20" text="Std Width"/>
+                        <Input id="stdwi" width="60px" editable="false"  maxLength="8"/> 
+                        <Label id="a21" text="Std Net Weight"/>
+                        <Input id="stdnetwe" width="60px" editable="false" maxLength="8"/> 
+                        <Label id="a22" text="Std Ozs"/>
+                        <Input id="stdOzs" width="90px" editable="false"  maxLength="8"/> 
+                        <Label id="a23" text="Act Ozs"/>
+                        <Input id="actozs" width="90px" editable="false" maxLength="8"/> 
+                        <Label id="12a23" text="TP"/>
+                        <Input id="TP" width="90px" type="Number" editable="true" maxLength="2"/> 
+                        <Label id="2a23" text="TP Remark"/>
+                        <Input id="Tpremk" width="90px" editable="true" maxLength="20"/> 
+                        <Label id="32a3"  text="Party"/>
+                        <Input id="party" width="200px" editable="false" maxLength="40"/> 
+                        <Label id="dpta" text="DPT"/>
+                        <Input id="dpt" width="150px" editable="false" maxLength="40"/>
+                        <Label id="3223a3" text="Cutable Width"/>
+                        <Input id="cutablewidth" type="Number" width="90px" editable="true" maxLength="6"/>  
+                        
+                        <core:Title id="tilt4"/>
+                        <table:Table id="table1" rowHeight="20px" rows="{oTableDataModel>/aTableData}" selectionBehavior="RowSelector">
+                            <table:extension>
+                                <OverflowToolbar id="oftb78" style="Clear">
+                                    <ToolbarSpacer id="tbs09"/>
+                                    <Button id="idDelete" icon="sap-icon://delete" tooltip="Delete Table records" press="DeleteTableData"/>
+                                    <!-- <Button id="button198" icon="sap-icon://add" tooltip="Add Row Table records" press="addTableData"/> -->
+                                </OverflowToolbar>
+                            </table:extension>
+                            <table:columns>
+                                <table:Column id="c1" width="6rem">
+                                    <Label id="c2" text="Fault Code"/>
+                                    <table:template>
+                                        <Input id="c3" value="{oTableDataModel>Faultcode}"  editable="false" maxLength="3"/>
+                                    </table:template>
+                                </table:Column>
+                                <table:Column id="c4" width="6rem">
+                                    <Label id="c5" text="From Damage Meter"/>
+                                    <table:template>
+                                        <Input id="c6" value="{oTableDataModel>Faultmeter}"  maxLength="7"/>
+                                    </table:template>
+                                </table:Column>
+                                <table:Column  id="c7" width="6rem">
+                                    <Label  id="c8" text="To Damage Meter"/>
+                                    <table:template>
+                                        <Input id="c9" value="{oTableDataModel>toFaultmeter}"  maxLength="7"/>
+                                    </table:template>
+                                </table:Column>
+                                <table:Column id="c10" width="4rem">
+                                    <Label id="c11" text="Point"/>
+                                    <table:template>
+                                        <Input id="c12" value="{oTableDataModel>point}"  maxLength="3"/>
+                                    </table:template>
+                                </table:Column>
+                                <table:Column id="c13" width="8rem">
+                                    <Label id="c14" text="Fault Name"/>
+                                    <table:template>
+                                        <Input id="c15" value="{oTableDataModel>Faultname}" editable="false" maxLength="20"/>
+                                    </table:template>
+                                </table:Column>
+                                <table:Column id="c16" width="8rem">
+                                    <Label id="c17" text="Department"/>
+                                    <table:template>
+                                        <Input id="c18" value="{oTableDataModel>Department}" editable="false"  maxLength="25"/>
+                                    </table:template>
+                                </table:Column>
+                                <table:Column id="1c13" width="8rem">
+                                    <Label id="1c14" text="Party Name"/>
+                                    <table:template>
+                                        <Input id="1c15" value="{oTableDataModel>Partyname}" editable="false" maxLength="20"/>
+                                    </table:template>
+                                </table:Column>
+                                <table:Column id="1c16" width="8rem">
+                                    <Label id="1c17" text="Batch"/>
+                                    <table:template>
+                                        <Input id="1c18" value="{oTableDataModel>Batch}" editable="false"  maxLength="25"/>
+                                    </table:template>
+                                </table:Column>
+                            </table:columns>
+                        </table:Table> 
+                        <Label id="c19" text="Fault"/>
+                        <ComboBox items="{path : '/fault_code',length : '100000'}" width="150px" showSecondaryValues="true" id="idDel2" >
+                            <items>
+                                <core:ListItem id="c20" text="{Code}" key="{Code}" additionalText="{Fname}"/>
+                            </items>
+                        </ComboBox>
+                        <!-- <Input id="idDel2" value="" maxLength="10"/> -->
+                        <Button id="c21" text="Go" press="addfaultTableData"  />     
+                    </f:content>
+                </f:SimpleForm>
+            <f:SimpleForm id="fSimpleForm2"  layout="ResponsiveGridLayout" columnsL="2" columnsXL="2" columnsM="1" editable="true">
+                    <table:Table id="table2" rowHeight="10px" rows="{oTableDataModel1>/aTableData1}" selectionBehavior="RowSelector">
+                        <table:extension>
+                            <OverflowToolbar id="oftb" style="Clear">
+                                <ToolbarSpacer id="tbs"/>
+                                <Button id="idDele" icon="sap-icon://delete" tooltip="Delete Table records" press="DeleteTableData1"/>
+                            </OverflowToolbar>
+                        </table:extension>
+                        <table:columns>
+                            <table:Column width="5rem" id="tc1" sortProperty="Name">
+                                <Label text="Sr. No." id="SrLabel"/>
+                                <table:template>
+                                    <Input id="SrInput" value="{oTableDataModel1>serialno}" maxLength="3" editable="false"/>
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="8rem" id="tc2">
+                                <Label id="c22" text="Batch"/>
+                                <table:template>
+                                    <Input id="c23" value="{oTableDataModel1>Batch}" editable="false" maxLength="10"  />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="8rem" id="tc8">
+                                <Label id="c24" text="Set No."/>
+                                <table:template>
+                                    <Input id="c25" value="{oTableDataModel1>setno}" editable="true"  maxLength="10" submit="Onsetno"  />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="8rem" id="tc3">
+                                <Label id="c26" text="Length"/>
+                                <table:template>
+                                    <Input value="{oTableDataModel1>Length}" maxLength="7" id="length" submit="total"/>
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="6rem" id="tc6">
+                                <Label id="c27" text="Loom No"/>
+                                <table:template>
+                                    <Input id="c28" value="{oTableDataModel1>Loomno}" editable="true" maxLength="4" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="6rem" id="tc612">
+                                <Label id="1c27" text="Party name"/>
+                                <table:template>
+                                    <Input id="2c28" value="{oTableDataModel1>partyname}" editable="false" maxLength="4" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="8rem" id="tc4">
+                                <Label id="c29" text="Sales Order"/>
+                                <table:template>
+                                    <Input id="c30" maxLength="10"  value="{oTableDataModel1>SalesOrder}" editable="false"/>
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="8rem" id="tc5">
+                                <Label id="c31" text="Item"/>
+                                <table:template>
+                                    <Input id="c32" value="{oTableDataModel1>Item}" editable="false"/>
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="8rem" id="tc9">
+                                <Label id="c315" text="Trolly No."/>
+                                <table:template>
+                                    <Input id="c325" value="{oTableDataModel1>trollyno}" editable="false"/>
+                                </table:template>
+                            </table:Column>
+                        </table:columns>
+                    </table:Table>
+                <core:Title id="tilr3"/>
+                 <Label id="c33" text="Remarks-1"/>
+                 <Input id="Rema1" placeholder="Enter Remarks-1" maxLength="40"/>
+                 <Label id="c34" text="Remarks-2"/>
+                 <Input id="Rema2" placeholder="Enter Remarks-2"  maxLength="40" />
+                 <Label id="c35" text="Roll Length Total"/>
+                 <Input id="lengthtot" value="{oTotalModel>/TotalQty}"  editable="false" />
+           </f:SimpleForm>
+        </content>
+         <footer>
+            <Bar id="bar">
+                <contentRight>
+                    <Button id="bt12" icon="sap-icon://save" text="Save" type="Emphasized" press="savedata" visible="{}"/>
+                    <!-- <Button icon="sap-icon://save" text="fault" type="Emphasized" press="ZDNMFAULTData" visible="{}"/> -->
+                </contentRight>
+            </Bar>
+        </footer>
+    </Page>
+</mvc:View>

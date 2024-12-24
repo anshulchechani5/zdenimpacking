@@ -1,0 +1,885 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://my405100-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my405100-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my405100-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my405100-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my405100-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my405100-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my405100-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my405100-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my405100-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my405100-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_zdnmfault_serdef" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="I_DraftAdministrativeDataType" sap:label="Draft Administration Data" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DraftUUID"/>
+                    <PropertyRef Name="DraftEntityType"/>
+                </Key>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Draft (Technical ID)"/>
+                <Property Name="DraftEntityType" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:label="Draft Entity ID"/>
+                <Property Name="CreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:filter-restriction="interval" sap:label="Draft Created On"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="CreatedByUserDescription" sap:label="Draft Created By"/>
+                <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:filter-restriction="interval" sap:label="Draft Last Changed On"/>
+                <Property Name="LastChangedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="LastChangedByUserDescription" sap:label="Draft Last Changed By"/>
+                <Property Name="DraftAccessType" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Draft Access Type"/>
+                <Property Name="ProcessingStartDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft In Process Since"/>
+                <Property Name="InProcessByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="InProcessByUserDescription" sap:label="Draft In Process By"/>
+                <Property Name="DraftIsKeptByUser" Type="Edm.Boolean" sap:label="Draft Is Kept By User"/>
+                <Property Name="EnqueueStartDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Locked Since"/>
+                <Property Name="DraftIsCreatedByMe" Type="Edm.Boolean" sap:label="Draft Created By Me"/>
+                <Property Name="DraftIsLastChangedByMe" Type="Edm.Boolean" sap:label="Draft Last Changed By Me"/>
+                <Property Name="DraftIsProcessedByMe" Type="Edm.Boolean" sap:label="Draft In Process By Me"/>
+                <Property Name="CreatedByUserDescription" Type="Edm.String" MaxLength="80" sap:label="Draft Created By (Description)"/>
+                <Property Name="LastChangedByUserDescription" Type="Edm.String" MaxLength="80" sap:label="Draft Last Changed By (Description)"/>
+                <Property Name="InProcessByUserDescription" Type="Edm.String" MaxLength="80" sap:label="Draft In Process By (Description)"/>
+            </EntityType>
+            <EntityType Name="PlantDataType" sap:label="Plant" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Plant"/>
+                </Key>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="PlantName" sap:label="Plant"/>
+                <Property Name="PlantName" Type="Edm.String" MaxLength="30" sap:label="Plant Name"/>
+                <Property Name="ValuationArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Valuation Area"/>
+                <Property Name="PlantCustomer" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer No Plant" sap:quickinfo="Customer Number of Plant"/>
+                <Property Name="PlantSupplier" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:text="to_Supplier/SupplierName" sap:label="Sppl. No. Plnt" sap:quickinfo="Supplier Number of Plant"/>
+                <Property Name="FactoryCalendar" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Factory Calendar" sap:quickinfo="Factory calendar key"/>
+                <Property Name="DefaultPurchasingOrganization" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Purch. Organization" sap:quickinfo="Purchasing Organization"/>
+                <Property Name="SalesOrganization" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Sls Organization ICB" sap:quickinfo="Sales Organization for Intercompany Billing"/>
+                <Property Name="AddressID" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Address"/>
+                <Property Name="PlantCategory" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Plant Cat." sap:quickinfo="Plant category"/>
+                <Property Name="DistributionChannel" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Distrib.Channel" sap:quickinfo="Distribution Channel for Intercompany billing"/>
+                <Property Name="Division" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Interco. Billing Div" sap:quickinfo="Division for Intercompany Billing"/>
+                <Property Name="Language" Type="Edm.String" MaxLength="2" sap:label="Language Key"/>
+                <Property Name="IsMarkedForArchiving" Type="Edm.Boolean" sap:label="Archiving Flag" sap:quickinfo="Central archiving marker for master record"/>
+                <Property Name="BusinessPlace" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Business Place"/>
+                <NavigationProperty Name="to_Supplier" Relationship="cds_zdnmfault_serdef.assoc_06E8747E1FA5EA5C2F4EA97C27494A59" FromRole="FromRole_assoc_06E8747E1FA5EA5C2F4EA97C27494A59" ToRole="ToRole_assoc_06E8747E1FA5EA5C2F4EA97C27494A59"/>
+            </EntityType>
+            <EntityType Name="storage_locType" sap:label="Storage Location" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Plant"/>
+                    <PropertyRef Name="StorageLocation"/>
+                </Key>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="to_Plant/PlantName" sap:label="Plant" sap:value-list="standard"/>
+                <Property Name="StorageLocation" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="StorageLocationName" sap:label="Storage Location"/>
+                <Property Name="StorageLocationName" Type="Edm.String" MaxLength="16" sap:label="Storage Loc. Name" sap:quickinfo="Storage Location Name"/>
+                <Property Name="SalesOrganization" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
+                <Property Name="DistributionChannel" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Distribution Channel"/>
+                <Property Name="Division" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Division"/>
+                <Property Name="IsStorLocAuthznCheckActive" Type="Edm.Boolean" sap:label="Authorization check" sap:quickinfo="Storage location authorization for goods movements active"/>
+                <Property Name="HandlingUnitIsRequired" Type="Edm.Boolean" sap:label="HU Requirement" sap:quickinfo="Handling unit requirement"/>
+                <Property Name="ConfigDeprecationCode" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Validity" sap:quickinfo="Deprecated Entries"/>
+                <NavigationProperty Name="to_Plant" Relationship="cds_zdnmfault_serdef.assoc_D9F58E5374F5FE69243D07B1177F4915" FromRole="FromRole_assoc_D9F58E5374F5FE69243D07B1177F4915" ToRole="ToRole_assoc_D9F58E5374F5FE69243D07B1177F4915"/>
+            </EntityType>
+            <EntityType Name="SupplierType" sap:label="Supplier" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Supplier"/>
+                </Key>
+                <Property Name="Supplier" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="SupplierName" sap:label="Supplier" sap:quickinfo="Account Number of Supplier"/>
+                <Property Name="SupplierAccountGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Account Group" sap:quickinfo="Supplier Account Group"/>
+                <Property Name="SupplierName" Type="Edm.String" MaxLength="80" sap:label="Name of Supplier"/>
+                <Property Name="SupplierFullName" Type="Edm.String" MaxLength="220" sap:display-format="UpperCase" sap:label="Supplier Name" sap:quickinfo="Supplier Full Name"/>
+                <Property Name="BPSupplierName" Type="Edm.String" MaxLength="81" sap:label="Supplier Name"/>
+                <Property Name="BPSupplierFullName" Type="Edm.String" MaxLength="163" sap:label="Supplier Name" sap:quickinfo="Supplier Full Name"/>
+                <Property Name="BusinessPartnerName1" Type="Edm.String" MaxLength="40" sap:label="Name" sap:quickinfo="Name 1"/>
+                <Property Name="BusinessPartnerName2" Type="Edm.String" MaxLength="40" sap:label="Name 2"/>
+                <Property Name="BusinessPartnerName3" Type="Edm.String" MaxLength="40" sap:label="Name 3"/>
+                <Property Name="BusinessPartnerName4" Type="Edm.String" MaxLength="40" sap:label="Name 4"/>
+                <Property Name="BPAddrCityName" Type="Edm.String" MaxLength="40" sap:label="City"/>
+                <Property Name="BPAddrStreetName" Type="Edm.String" MaxLength="60" sap:label="Street"/>
+                <Property Name="AddressSearchTerm1" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Search Term 1"/>
+                <Property Name="AddressSearchTerm2" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Search Term 2"/>
+                <Property Name="DistrictName" Type="Edm.String" MaxLength="40" sap:label="District"/>
+                <Property Name="POBoxDeviatingCityName" Type="Edm.String" MaxLength="40" sap:label="PO Box City" sap:quickinfo="PO Box city"/>
+                <Property Name="BusinessPartnerFormOfAddress" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Title Key" sap:quickinfo="Form-of-Address Key"/>
+                <Property Name="IsBusinessPurposeCompleted" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Purpose Completed" sap:quickinfo="Business Purpose Completed Flag"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Name of Person who Created the Object"/>
+                <Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created On" sap:quickinfo="Record Created On"/>
+                <Property Name="IsOneTimeAccount" Type="Edm.Boolean" sap:label="One-Time Account" sap:quickinfo="Indicator: Is the Account a One-Time Account?"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Authorization" sap:quickinfo="Authorization Group"/>
+                <Property Name="VATRegistration" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="VAT Registration No." sap:quickinfo="VAT Registration Number"/>
+                <Property Name="AccountIsBlockedForPosting" Type="Edm.Boolean" sap:label="Posting Block(Deprecated)" sap:quickinfo="Central Posting Block"/>
+                <Property Name="TaxJurisdiction" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Tax Jurisdiction"/>
+                <Property Name="SupplierStandardCarrierAccess" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="SCAC" sap:quickinfo="Standard carrier access code"/>
+                <Property Name="SupplierFwdAgentFreightGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Carrier freight grp" sap:quickinfo="Forwarding agent freight group"/>
+                <Property Name="SupplierAgentProcedureGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="ServAgntProcGrp" sap:quickinfo="Service agent procedure group"/>
+                <Property Name="SupplIsSocialInsuranceRegtrd" Type="Edm.Boolean" sap:label="Social Insurance" sap:quickinfo="Registered for Social Insurance"/>
+                <Property Name="SocialInsuranceActivityCode" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Social Ins. Code" sap:quickinfo="Activity Code for Social Insurance"/>
+                <Property Name="SupplierCorporateGroup" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Group Key"/>
+                <Property Name="Customer" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer Number"/>
+                <Property Name="Industry" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Industry" sap:quickinfo="Industry Key"/>
+                <Property Name="TaxNumber1" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:label="Tax Number 1"/>
+                <Property Name="TaxNumber2" Type="Edm.String" MaxLength="11" sap:display-format="UpperCase" sap:label="Tax Number 2"/>
+                <Property Name="TaxNumber3" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Tax Number 3"/>
+                <Property Name="TaxNumber4" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Tax Number 4"/>
+                <Property Name="TaxNumber5" Type="Edm.String" MaxLength="60" sap:display-format="UpperCase" sap:label="Tax Number 5"/>
+                <Property Name="TaxNumber6" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Tax Number 6"/>
+                <Property Name="PostingIsBlocked" Type="Edm.Boolean" sap:label="Posting Block" sap:quickinfo="Central Posting Block"/>
+                <Property Name="PurchasingIsBlocked" Type="Edm.Boolean" sap:label="Purch. Block" sap:quickinfo="Centrally imposed purchasing block"/>
+                <Property Name="InternationalLocationNumber1" Type="Edm.String" MaxLength="7" sap:display-format="NonNegative" sap:label="Int. location no. 1" sap:quickinfo="International Location Number (Part 1)"/>
+                <Property Name="InternationalLocationNumber2" Type="Edm.String" MaxLength="5" sap:display-format="NonNegative" sap:label="Int. location no. 2" sap:quickinfo="International Location Number (Part 2)"/>
+                <Property Name="InternationalLocationNumber3" Type="Edm.String" MaxLength="1" sap:display-format="NonNegative" sap:label="Check Digit" sap:quickinfo="Check digit for the international location number"/>
+                <Property Name="AddressID" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Address"/>
+                <Property Name="Region" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Region" sap:quickinfo="Region (State, Province, County)"/>
+                <Property Name="OrganizationBPName1" Type="Edm.String" MaxLength="35" sap:label="Name"/>
+                <Property Name="OrganizationBPName2" Type="Edm.String" MaxLength="35" sap:label="Name 2"/>
+                <Property Name="CityName" Type="Edm.String" MaxLength="35" sap:label="City"/>
+                <Property Name="PostalCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Postal Code"/>
+                <Property Name="StreetName" Type="Edm.String" MaxLength="35" sap:label="Street" sap:quickinfo="Street and House Number"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country/Region Key"/>
+                <Property Name="ConcatenatedInternationalLocNo" Type="Edm.String" MaxLength="20" sap:label="Int. Location No." sap:quickinfo="Cocatenated International Location Number"/>
+                <Property Name="SupplierProcurementBlock" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Block Function" sap:quickinfo="Function That Will Be Blocked"/>
+                <Property Name="SuplrQualityManagementSystem" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Actual QM System" sap:quickinfo="Supplier's QM System"/>
+                <Property Name="SuplrQltyInProcmtCertfnValidTo" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="QM System Valid To" sap:quickinfo="Validity Date of Certification"/>
+                <Property Name="SupplierLanguage" Type="Edm.String" MaxLength="2" sap:label="Language Key"/>
+                <Property Name="AlternativePayeeAccountNumber" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Alternative Payee" sap:quickinfo="Account Number of the Alternative Payee"/>
+                <Property Name="PhoneNumber1" Type="Edm.String" MaxLength="16" sap:label="Telephone 1" sap:quickinfo="First telephone number"/>
+                <Property Name="FaxNumber" Type="Edm.String" MaxLength="31" sap:label="Fax Number"/>
+                <Property Name="IsNaturalPerson" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Natural Person"/>
+                <Property Name="TaxNumberResponsible" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Tax Number" sap:quickinfo="Tax Number at Responsible Tax Authority"/>
+                <Property Name="UK_ContractorBusinessType" Type="Edm.String" MaxLength="12" sap:label="Business Type" sap:quickinfo="Subcontractor's Business Type"/>
+                <Property Name="UK_PartnerTradingName" Type="Edm.String" MaxLength="30" sap:label="Prtnr's Trading Name" sap:quickinfo="Partner's Trading Name"/>
+                <Property Name="UK_PartnerTaxReference" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Partner's UTR" sap:quickinfo="Partner's Unique Tax Reference (UTR)"/>
+                <Property Name="UK_VerificationStatus" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Verification Status"/>
+                <Property Name="UK_VerificationNumber" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Verification Number"/>
+                <Property Name="UK_CompanyRegistrationNumber" Type="Edm.String" MaxLength="8" sap:label="Comp. House Reg. No." sap:quickinfo="Companies House Registration Number"/>
+                <Property Name="UK_VerifiedTaxStatus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Tax Status" sap:quickinfo="Tax Status of the Verified Subcontractor"/>
+                <Property Name="FormOfAddress" Type="Edm.String" MaxLength="15" sap:label="Title"/>
+                <Property Name="ReferenceAccountGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Reference Acct Group" sap:quickinfo="Reference Account Group for One-Time Account (Vendor)"/>
+                <Property Name="VATLiability" Type="Edm.Boolean" sap:label="Liable for VAT"/>
+                <Property Name="ResponsibleType" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Tax Type"/>
+                <Property Name="TaxNumberType" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Tax Number Type"/>
+                <Property Name="FiscalAddress" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Fiscal Address" sap:quickinfo="Account number of the master record with fiscal address"/>
+                <Property Name="BusinessType" Type="Edm.String" MaxLength="30" sap:label="Type of Business"/>
+                <Property Name="BirthDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date of Birth" sap:quickinfo="Date of Birth of the Person Subject to Withholding Tax"/>
+                <Property Name="PaymentIsBlockedForSupplier" Type="Edm.Boolean" sap:label="Payment Block"/>
+                <Property Name="SortField" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Search Term" sap:quickinfo="Sort Field"/>
+                <Property Name="PhoneNumber2" Type="Edm.String" MaxLength="16" sap:label="Telephone 2" sap:quickinfo="Second telephone number"/>
+                <Property Name="DeletionIndicator" Type="Edm.Boolean" sap:label="Deletion Flag" sap:quickinfo="Central Deletion Flag for Master Record"/>
+                <Property Name="TaxInvoiceRepresentativeName" Type="Edm.String" MaxLength="10" sap:label="Rep's Name" sap:quickinfo="Name of Representative"/>
+                <Property Name="IndustryType" Type="Edm.String" MaxLength="30" sap:label="Type of Industry"/>
+                <Property Name="IN_GSTSupplierClassification" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="GST Ven Class." sap:quickinfo="Vendor Classification for GST"/>
+                <Property Name="SuplrProofOfDelivRlvtCode" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Relevant for POD" sap:quickinfo="Supplier indicator relevant for proof of delivery"/>
+                <Property Name="TradingPartner" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Trading Partner No." sap:quickinfo="Company ID of Trading Partner"/>
+                <Property Name="BR_TaxIsSplit" Type="Edm.Boolean" sap:label="Tax Split"/>
+                <Property Name="AU_PayerIsPayingToCarryOnEnt" Type="Edm.Boolean" sap:label="Enterprise in AU" sap:quickinfo="Is payer making payment in course of carrying on enterprise"/>
+                <Property Name="AU_IndividualIsUnder18" Type="Edm.Boolean" sap:label="Individual" sap:quickinfo="Is an individual under 18 and payment does not exceed $350"/>
+                <Property Name="AU_PaymentIsExceeding75" Type="Edm.Boolean" sap:label="Payment Does not Exc" sap:quickinfo="The payment does not exceed $75, excl. GST"/>
+                <Property Name="AU_PaymentIsWhollyInputTaxed" Type="Edm.Boolean" sap:label="Wholly Input Taxed" sap:quickinfo="The supply that the payment relates to is wholly input taxed"/>
+                <Property Name="AU_PartnerIsSupplyWithoutGain" Type="Edm.Boolean" sap:label="Individual w/o Gain" sap:quickinfo="The supply is made by an individual without gain"/>
+                <Property Name="AU_SupplierIsEntitledToABN" Type="Edm.Boolean" sap:label="ABN Eligible" sap:quickinfo="The supplier is not entitled to an ABN"/>
+                <Property Name="AU_PaymentIsIncomeExempted" Type="Edm.Boolean" sap:label="Payment Exempt" sap:quickinfo="The whole of the payment is exempt income."/>
+                <Property Name="AU_SupplyIsMadeAsPrivateHobby" Type="Edm.Boolean" sap:label="Hobby" sap:quickinfo="An activity done as a private recreational pursuit"/>
+                <Property Name="AU_SupplyMadeIsOfDmstcNature" Type="Edm.Boolean" sap:label="Domestic" sap:quickinfo="wholly of a private or domestic nature"/>
+                <Property Name="IsToBeAcceptedAtOrigin" Type="Edm.Boolean" sap:label="Origin Acceptance" sap:quickinfo="Acceptance At Origin"/>
+                <Property Name="BPIsEqualizationTaxSubject" Type="Edm.Boolean" sap:label="Checkbox" sap:heading=""/>
+                <Property Name="BRSpcfcTaxBasePercentageCode" Type="Edm.String" MaxLength="1" sap:display-format="NonNegative" sap:label="Tax Base" sap:quickinfo="Tax Base in Percentage"/>
+                <Property Name="SupplierProfession" Type="Edm.String" MaxLength="30" sap:label="Profession"/>
+                <Property Name="SuplrManufacturerExternalName" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Ext. manufacturer" sap:quickinfo="External manufacturer code name or number"/>
+                <Property Name="DataMediumExchangeIndicator" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="DME Recipient Code" sap:quickinfo="Recipient Code for Data Medium Exchange"/>
+                <Property Name="DataExchangeInstructionKey" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Instruction Key" sap:quickinfo="Instruction Key for Data Medium Exchange"/>
+                <Property Name="SupplierIsSubRangeRelevant" Type="Edm.Boolean" sap:label="VSR Relevant" sap:quickinfo="Indicator: vendor sub-range relevant"/>
+                <Property Name="TrainStationName" Type="Edm.String" MaxLength="25" sap:label="Train Station" sap:quickinfo="Train station"/>
+                <Property Name="AlternativePayeeIsAllowed" Type="Edm.Boolean" sap:label="Payee in Document" sap:quickinfo="Indicator: Alternative Payee in Document Allowed?"/>
+                <Property Name="PaytSlipWthRefSubscriber" Type="Edm.String" MaxLength="11" sap:display-format="UpperCase" sap:label="PBC/ISR Number" sap:quickinfo="ISR Subscriber Number"/>
+                <Property Name="TranspServiceAgentStstcGrp" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Stat. Grp, Agent" sap:quickinfo="Shipment: statistics group, transportation service agent"/>
+                <Property Name="SupplierIsPlantRelevant" Type="Edm.Boolean" sap:label="Plant Level Relevant" sap:quickinfo="Indicator: plant level relevant"/>
+                <Property Name="SuplrTaxAuthorityAccountNumber" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Tax Office" sap:quickinfo="Account Number of Master Record of Tax Office Responsible"/>
+                <Property Name="SuplrCarrierConfirmIsExpected" Type="Edm.Boolean" sap:label="Carrier confirmation" sap:quickinfo="Carrier confirmation is expected"/>
+                <Property Name="SupplierPlant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant" sap:quickinfo="Plant (Own or External)"/>
+                <Property Name="FactoryCalendar" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Factory Calendar" sap:quickinfo="Factory calendar key"/>
+                <Property Name="PaymentReason" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Payment Reason"/>
+                <Property Name="SupplierCentralDeletionIsBlock" Type="Edm.Boolean" sap:label="Central Del. Block" sap:quickinfo="Central deletion block for master record"/>
+                <Property Name="DataControllerSet" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Data Ctrlr. Set" sap:quickinfo="BP: Data Controller Set Flag"/>
+                <Property Name="DataController1" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Data Controller" sap:quickinfo="BP: Data Controller (Internal Use Only)"/>
+                <Property Name="DataController2" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Data Controller" sap:quickinfo="BP: Data Controller (Internal Use Only)"/>
+                <Property Name="DataController3" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Data Controller" sap:quickinfo="BP: Data Controller (Internal Use Only)"/>
+                <Property Name="DataController4" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Data Controller" sap:quickinfo="BP: Data Controller (Internal Use Only)"/>
+                <Property Name="DataController5" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Data Controller" sap:quickinfo="BP: Data Controller (Internal Use Only)"/>
+                <Property Name="DataController6" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Data Controller" sap:quickinfo="BP: Data Controller (Internal Use Only)"/>
+                <Property Name="DataController7" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Data Controller" sap:quickinfo="BP: Data Controller (Internal Use Only)"/>
+                <Property Name="DataController8" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Data Controller" sap:quickinfo="BP: Data Controller (Internal Use Only)"/>
+                <Property Name="DataController9" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Data Controller" sap:quickinfo="BP: Data Controller (Internal Use Only)"/>
+                <Property Name="DataController10" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Data Controller" sap:quickinfo="BP: Data Controller (Internal Use Only)"/>
+                <Property Name="SupplierTransportationChain" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Transportation Chain"/>
+                <Property Name="SupplierStagingTimeInDays" Type="Edm.Decimal" Precision="3" Scale="0" sap:label="Staging Time" sap:quickinfo="Staging Time in Days"/>
+                <Property Name="SupplierSchedulingProcedure" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Scheduling Procedure"/>
+                <Property Name="CollectiveNumberingIsRelevant" Type="Edm.Boolean" sap:label="Rel. for Coll. No." sap:quickinfo="Cross Docking: Relevant for Collective Numbering"/>
+                <Property Name="BusinessPartnerPanNumber" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="PAN" sap:quickinfo="Permanent Account Number"/>
+                <Property Name="BPPanReferenceNumber" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="PAN Reference Number"/>
+                <Property Name="BPPanValidFromDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="PAN Valid From Date"/>
+            </EntityType>
+            <EntityType Name="mat_stockType" sap:label="Mat_Stock" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Material"/>
+                    <PropertyRef Name="Plant"/>
+                    <PropertyRef Name="StorageLocation"/>
+                    <PropertyRef Name="Batch"/>
+                    <PropertyRef Name="SDDocument"/>
+                    <PropertyRef Name="SDDocumentItem"/>
+                    <PropertyRef Name="MaterialBaseUnit"/>
+                </Key>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="Stock Material" sap:quickinfo="Material in Respect of Which Stock is Managed"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="StorageLocation" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Storage Location"/>
+                <Property Name="Batch" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Batch SID" sap:quickinfo="Batch Number (Stock Identifier)"/>
+                <Property Name="SDDocument" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales order" sap:quickinfo="Sales order number of valuated sales order stock"/>
+                <Property Name="SDDocumentItem" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:label="Sales order item" sap:quickinfo="Sales Order Item of Valuated Sales Order Stock"/>
+                <Property Name="MaterialBaseUnit" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Base Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="ProductDescription" Type="Edm.String" MaxLength="40" sap:label="Product Description"/>
+                <Property Name="BatchBySupplier" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Setno" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Trollyno" Type="Edm.Int16"/>
+                <Property Name="Loomnumber" Type="Edm.Int32"/>
+                <Property Name="Partyname" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Party" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Supplier" Type="Edm.String" MaxLength="7"/>
+                <Property Name="MatlWrhsStkQtyInMatlBaseUnit" Type="Edm.Decimal" Precision="31" Scale="14" sap:unit="MaterialBaseUnit"/>
+                <Property Name="ProductType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Product Type"/>
+            </EntityType>
+            <EntityType Name="ZpackdScreenTableType" sap:label="ZPACKD SCREEN TABLE - Maintain" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Code"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="Code" Type="Edm.String" Nullable="false" MaxLength="3" sap:updatable="false"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Farea" Type="Edm.String" MaxLength="15"/>
+                <Property Name="Ftype" Type="Edm.Int32"/>
+                <Property Name="Fname" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Deptno" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative"/>
+                <Property Name="Zdept" Type="Edm.String" MaxLength="25"/>
+                <Property Name="LocalCreatedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Created By User" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LocalCreatedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Created On" sap:quickinfo="Creation Date Time" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LastChangedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Changed On" sap:quickinfo="Last Change Date Time" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:label="Has Draft" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:label="Has active" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:label="Is active" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Relationship="cds_zdnmfault_serdef.assoc_B2043329D34130A29F8914146B95CECB" FromRole="FromRole_assoc_B2043329D34130A29F8914146B95CECB" ToRole="ToRole_assoc_B2043329D34130A29F8914146B95CECB"/>
+                <NavigationProperty Name="SiblingEntity" Relationship="cds_zdnmfault_serdef.assoc_E8150119882CB2C0347B9D7236509616" FromRole="FromRole_assoc_E8150119882CB2C0347B9D7236509616" ToRole="ToRole_assoc_E8150119882CB2C0347B9D7236509616"/>
+                <NavigationProperty Name="to_ZpackdScreenTablAll" Relationship="cds_zdnmfault_serdef.assoc_7A4CF83B2DF6B565FBC173741258E6F9" FromRole="ToRole_assoc_7A4CF83B2DF6B565FBC173741258E6F9" ToRole="FromRole_assoc_7A4CF83B2DF6B565FBC173741258E6F9"/>
+            </EntityType>
+            <EntityType Name="ZpackdScreenTablAllType" sap:label="ZPACKD SCREEN TABLE Singleton - Maintain" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SingletonID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="SingletonID" Type="Edm.Byte" Nullable="false" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LastChangedAtMax" Type="Edm.Decimal" Precision="21" Scale="7"/>
+                <Property Name="TransportRequestID" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Transport" sap:quickinfo="XCO: Transport"/>
+                <Property Name="HideTransport" Type="Edm.Boolean" sap:label="Truth Value" sap:quickinfo="Truth Value: True/False"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:label="Has Draft" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:label="Has active" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:label="Is active" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Relationship="cds_zdnmfault_serdef.assoc_291848D74C00D2BA3C2E694D09B6E87A" FromRole="FromRole_assoc_291848D74C00D2BA3C2E694D09B6E87A" ToRole="ToRole_assoc_291848D74C00D2BA3C2E694D09B6E87A"/>
+                <NavigationProperty Name="SiblingEntity" Relationship="cds_zdnmfault_serdef.assoc_5680229B8F8BCBF38CB0BEAB8F55207A" FromRole="FromRole_assoc_5680229B8F8BCBF38CB0BEAB8F55207A" ToRole="ToRole_assoc_5680229B8F8BCBF38CB0BEAB8F55207A"/>
+                <NavigationProperty Name="to_ZpackdScreenTable" Relationship="cds_zdnmfault_serdef.assoc_7A4CF83B2DF6B565FBC173741258E6F9" FromRole="FromRole_assoc_7A4CF83B2DF6B565FBC173741258E6F9" ToRole="ToRole_assoc_7A4CF83B2DF6B565FBC173741258E6F9"/>
+            </EntityType>
+            <EntityType Name="fault_codeType" sap:label="Fault code  for Cds" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Code"/>
+                </Key>
+                <Property Name="Code" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Farea" Type="Edm.String" MaxLength="15"/>
+                <Property Name="Ftype" Type="Edm.Int32"/>
+                <Property Name="Fname" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Deptno" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative"/>
+                <Property Name="Zdept" Type="Edm.String" MaxLength="25"/>
+            </EntityType>
+            <EntityType Name="operator_dataType" sap:label="Operator table" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Bukrs"/>
+                    <PropertyRef Name="Plant"/>
+                    <PropertyRef Name="Empcode"/>
+                </Key>
+                <Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="Empcode" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="Empname" Type="Edm.String" MaxLength="35"/>
+                <Property Name="Deptname" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Cancel" Type="Edm.String" MaxLength="1"/>
+            </EntityType>
+            <EntityType Name="DStdType" sap:label="Cds For SortMaster Denim" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Material"/>
+                    <PropertyRef Name="Plant"/>
+                    <PropertyRef Name="Pdno"/>
+                </Key>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="Pdno" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="pdcode" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Dyeingsort" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Mattype" Type="Edm.String" MaxLength="15"/>
+                <Property Name="Reed" Type="Edm.Int32"/>
+                <Property Name="Dent" Type="Edm.Int32"/>
+                <Property Name="Epi" Type="Edm.Int32"/>
+                <Property Name="Warpcount1" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Warptype1" Type="Edm.String" MaxLength="40"/>
+                <Property Name="warptypedesc1" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Ratiowarpper1" Type="Edm.Decimal" Precision="5" Scale="2"/>
+                <Property Name="Warpcount2" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Warptype2" Type="Edm.String" MaxLength="40"/>
+                <Property Name="warptypedesc2" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Ratiowarpper2" Type="Edm.Decimal" Precision="5" Scale="2"/>
+                <Property Name="Warpcount3" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Warptype3" Type="Edm.String" MaxLength="40"/>
+                <Property Name="warptypedesc3" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Ratiowarpper3" Type="Edm.Decimal" Precision="5" Scale="2"/>
+                <Property Name="Weftcount1" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Wefttype1" Type="Edm.String" MaxLength="40"/>
+                <Property Name="wefttypedesc1" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Ratioweftper1" Type="Edm.Decimal" Precision="5" Scale="2"/>
+                <Property Name="Weftcount2" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Wefttype2" Type="Edm.String" MaxLength="40"/>
+                <Property Name="wefttypedesc2" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Ratioweftper2" Type="Edm.Decimal" Precision="5" Scale="2"/>
+                <Property Name="Weftcount3" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Wefttype3" Type="Edm.String" MaxLength="40"/>
+                <Property Name="wefttypedesc3" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Ratioweftper3" Type="Edm.Decimal" Precision="5" Scale="2"/>
+                <Property Name="Weftcount4" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Wefttype4" Type="Edm.String" MaxLength="40"/>
+                <Property Name="wefttypedesc4" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Ratioweftper4" Type="Edm.Decimal" Precision="5" Scale="2"/>
+                <Property Name="Pick" Type="Edm.Int32"/>
+                <Property Name="Reedspace" Type="Edm.Int32"/>
+                <Property Name="Extraends" Type="Edm.Int64"/>
+                <Property Name="Totalends" Type="Edm.Int64"/>
+                <Property Name="Dyeingshade" Type="Edm.String" MaxLength="10"/>
+                <Property Name="shadepercen" Type="Edm.String" MaxLength="10"/>
+                <Property Name="shadepercen2" Type="Edm.String" MaxLength="10"/>
+                <Property Name="shadepercen3" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Weave" Type="Edm.String" MaxLength="15"/>
+                <Property Name="Design" Type="Edm.String" MaxLength="15"/>
+                <Property Name="processroute" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Remark1" Type="Edm.String" MaxLength="200"/>
+                <Property Name="Shrinkage" Type="Edm.String" MaxLength="10"/>
+                <Property Name="greiegewidthinch" Type="Edm.Decimal" Precision="13" Scale="3"/>
+                <Property Name="Stdwidthinch" Type="Edm.Decimal" Precision="13" Scale="3"/>
+                <Property Name="Stdwidthcms" Type="Edm.Decimal" Precision="13" Scale="3"/>
+                <Property Name="Stdweight" Type="Edm.Decimal" Precision="13" Scale="3"/>
+                <Property Name="Weight" Type="Edm.Decimal" Precision="13" Scale="3"/>
+                <Property Name="Finwd" Type="Edm.Decimal" Precision="13" Scale="3"/>
+                <Property Name="Tareweight" Type="Edm.Decimal" Precision="13" Scale="3"/>
+                <Property Name="Remark2" Type="Edm.String" MaxLength="200"/>
+                <Property Name="Samplingweight" Type="Edm.Decimal" Precision="6" Scale="3"/>
+                <Property Name="Washweight" Type="Edm.Decimal" Precision="6" Scale="3"/>
+                <Property Name="Stretch" Type="Edm.String" MaxLength="10"/>
+                <Property Name="warpshrinperce" Type="Edm.Decimal" Precision="5" Scale="2"/>
+                <Property Name="weftshrinperce" Type="Edm.Decimal" Precision="5" Scale="2"/>
+                <Property Name="greypotentialwarpper" Type="Edm.Decimal" Precision="5" Scale="2"/>
+                <Property Name="Sort" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Finishtype" Type="Edm.String" MaxLength="15"/>
+                <Property Name="Blend" Type="Edm.String" MaxLength="15"/>
+                <Property Name="Loomtype" Type="Edm.String" MaxLength="15"/>
+                <Property Name="Compostion" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Fepi" Type="Edm.Int32"/>
+                <Property Name="Fppi" Type="Edm.Int32"/>
+                <Property Name="ProductDescription" Type="Edm.String" MaxLength="40" sap:label="Product Description"/>
+                <Property Name="gsm" Type="Edm.Decimal" Precision="13" Scale="3"/>
+                <Property Name="stdwidthinchtolerance" Type="Edm.Decimal" Precision="13" Scale="3"/>
+                <Property Name="stdweighttolerance" Type="Edm.Decimal" Precision="13" Scale="3"/>
+                <Property Name="stretchpertolerance" Type="Edm.Decimal" Precision="13" Scale="3"/>
+                <Property Name="wapshirnakgeperfrom" Type="Edm.Decimal" Precision="13" Scale="3"/>
+            </EntityType>
+            <EntityType Name="grading_tableType" sap:label="Weave Grading Table" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Werks"/>
+                    <PropertyRef Name="Prctr"/>
+                    <PropertyRef Name="Grade"/>
+                </Key>
+                <Property Name="Werks" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="Prctr" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="Grade" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="Zdesc" Type="Edm.String" MaxLength="15"/>
+                <Property Name="Zsnro" Type="Edm.String" MaxLength="10"/>
+            </EntityType>
+            <ComplexType Name="DummyFunctionImportResult">
+                <Property Name="IsInvalid" Type="Edm.Boolean" sap:label="TRUE"/>
+            </ComplexType>
+            <Association Name="assoc_D9F58E5374F5FE69243D07B1177F4915" sap:content-version="1">
+                <End Type="cds_zdnmfault_serdef.storage_locType" Multiplicity="1" Role="FromRole_assoc_D9F58E5374F5FE69243D07B1177F4915"/>
+                <End Type="cds_zdnmfault_serdef.PlantDataType" Multiplicity="1" Role="ToRole_assoc_D9F58E5374F5FE69243D07B1177F4915"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_D9F58E5374F5FE69243D07B1177F4915">
+                        <PropertyRef Name="Plant"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_D9F58E5374F5FE69243D07B1177F4915">
+                        <PropertyRef Name="Plant"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_291848D74C00D2BA3C2E694D09B6E87A" sap:content-version="1">
+                <End Type="cds_zdnmfault_serdef.ZpackdScreenTablAllType" Multiplicity="1" Role="FromRole_assoc_291848D74C00D2BA3C2E694D09B6E87A"/>
+                <End Type="cds_zdnmfault_serdef.I_DraftAdministrativeDataType" Multiplicity="0..1" Role="ToRole_assoc_291848D74C00D2BA3C2E694D09B6E87A"/>
+            </Association>
+            <Association Name="assoc_5680229B8F8BCBF38CB0BEAB8F55207A" sap:content-version="1">
+                <End Type="cds_zdnmfault_serdef.ZpackdScreenTablAllType" Multiplicity="1" Role="FromRole_assoc_5680229B8F8BCBF38CB0BEAB8F55207A"/>
+                <End Type="cds_zdnmfault_serdef.ZpackdScreenTablAllType" Multiplicity="0..1" Role="ToRole_assoc_5680229B8F8BCBF38CB0BEAB8F55207A"/>
+            </Association>
+            <Association Name="assoc_7A4CF83B2DF6B565FBC173741258E6F9" sap:content-version="1">
+                <End Type="cds_zdnmfault_serdef.ZpackdScreenTablAllType" Multiplicity="1" Role="FromRole_assoc_7A4CF83B2DF6B565FBC173741258E6F9">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="cds_zdnmfault_serdef.ZpackdScreenTableType" Multiplicity="*" Role="ToRole_assoc_7A4CF83B2DF6B565FBC173741258E6F9"/>
+            </Association>
+            <Association Name="assoc_B2043329D34130A29F8914146B95CECB" sap:content-version="1">
+                <End Type="cds_zdnmfault_serdef.ZpackdScreenTableType" Multiplicity="1" Role="FromRole_assoc_B2043329D34130A29F8914146B95CECB"/>
+                <End Type="cds_zdnmfault_serdef.I_DraftAdministrativeDataType" Multiplicity="0..1" Role="ToRole_assoc_B2043329D34130A29F8914146B95CECB"/>
+            </Association>
+            <Association Name="assoc_E8150119882CB2C0347B9D7236509616" sap:content-version="1">
+                <End Type="cds_zdnmfault_serdef.ZpackdScreenTableType" Multiplicity="1" Role="FromRole_assoc_E8150119882CB2C0347B9D7236509616"/>
+                <End Type="cds_zdnmfault_serdef.ZpackdScreenTableType" Multiplicity="0..1" Role="ToRole_assoc_E8150119882CB2C0347B9D7236509616"/>
+            </Association>
+            <Association Name="assoc_06E8747E1FA5EA5C2F4EA97C27494A59" sap:content-version="1">
+                <End Type="cds_zdnmfault_serdef.PlantDataType" Multiplicity="1" Role="FromRole_assoc_06E8747E1FA5EA5C2F4EA97C27494A59"/>
+                <End Type="cds_zdnmfault_serdef.SupplierType" Multiplicity="0..1" Role="ToRole_assoc_06E8747E1FA5EA5C2F4EA97C27494A59"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_06E8747E1FA5EA5C2F4EA97C27494A59">
+                        <PropertyRef Name="Supplier"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_06E8747E1FA5EA5C2F4EA97C27494A59">
+                        <PropertyRef Name="PlantSupplier"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="cds_zdnmfault_serdef_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="I_DraftAdministrativeData" EntityType="cds_zdnmfault_serdef.I_DraftAdministrativeDataType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="PlantData" EntityType="cds_zdnmfault_serdef.PlantDataType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="storage_loc" EntityType="cds_zdnmfault_serdef.storage_locType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="Supplier" EntityType="cds_zdnmfault_serdef.SupplierType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="mat_stock" EntityType="cds_zdnmfault_serdef.mat_stockType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZpackdScreenTable" EntityType="cds_zdnmfault_serdef.ZpackdScreenTableType" sap:creatable="false" sap:content-version="1"/>
+                <EntitySet Name="ZpackdScreenTablAll" EntityType="cds_zdnmfault_serdef.ZpackdScreenTablAllType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="fault_code" EntityType="cds_zdnmfault_serdef.fault_codeType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="operator_data" EntityType="cds_zdnmfault_serdef.operator_dataType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="DStd" EntityType="cds_zdnmfault_serdef.DStdType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="grading_table" EntityType="cds_zdnmfault_serdef.grading_tableType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_5680229B8F8BCBF38CB0BEAB8F55207A" Association="cds_zdnmfault_serdef.assoc_5680229B8F8BCBF38CB0BEAB8F55207A" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZpackdScreenTablAll" Role="FromRole_assoc_5680229B8F8BCBF38CB0BEAB8F55207A"/>
+                    <End EntitySet="ZpackdScreenTablAll" Role="ToRole_assoc_5680229B8F8BCBF38CB0BEAB8F55207A"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_E8150119882CB2C0347B9D7236509616" Association="cds_zdnmfault_serdef.assoc_E8150119882CB2C0347B9D7236509616" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZpackdScreenTable" Role="FromRole_assoc_E8150119882CB2C0347B9D7236509616"/>
+                    <End EntitySet="ZpackdScreenTable" Role="ToRole_assoc_E8150119882CB2C0347B9D7236509616"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_7A4CF83B2DF6B565FBC173741258E6F9" Association="cds_zdnmfault_serdef.assoc_7A4CF83B2DF6B565FBC173741258E6F9" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZpackdScreenTablAll" Role="FromRole_assoc_7A4CF83B2DF6B565FBC173741258E6F9"/>
+                    <End EntitySet="ZpackdScreenTable" Role="ToRole_assoc_7A4CF83B2DF6B565FBC173741258E6F9"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_291848D74C00D2BA3C2E694D09B6E87A" Association="cds_zdnmfault_serdef.assoc_291848D74C00D2BA3C2E694D09B6E87A" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZpackdScreenTablAll" Role="FromRole_assoc_291848D74C00D2BA3C2E694D09B6E87A"/>
+                    <End EntitySet="I_DraftAdministrativeData" Role="ToRole_assoc_291848D74C00D2BA3C2E694D09B6E87A"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_D9F58E5374F5FE69243D07B1177F4915" Association="cds_zdnmfault_serdef.assoc_D9F58E5374F5FE69243D07B1177F4915" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="storage_loc" Role="FromRole_assoc_D9F58E5374F5FE69243D07B1177F4915"/>
+                    <End EntitySet="PlantData" Role="ToRole_assoc_D9F58E5374F5FE69243D07B1177F4915"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_B2043329D34130A29F8914146B95CECB" Association="cds_zdnmfault_serdef.assoc_B2043329D34130A29F8914146B95CECB" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZpackdScreenTable" Role="FromRole_assoc_B2043329D34130A29F8914146B95CECB"/>
+                    <End EntitySet="I_DraftAdministrativeData" Role="ToRole_assoc_B2043329D34130A29F8914146B95CECB"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_06E8747E1FA5EA5C2F4EA97C27494A59" Association="cds_zdnmfault_serdef.assoc_06E8747E1FA5EA5C2F4EA97C27494A59" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="PlantData" Role="FromRole_assoc_06E8747E1FA5EA5C2F4EA97C27494A59"/>
+                    <End EntitySet="Supplier" Role="ToRole_assoc_06E8747E1FA5EA5C2F4EA97C27494A59"/>
+                </AssociationSet>
+                <FunctionImport Name="CopyZpackdScreenTable" ReturnType="cds_zdnmfault_serdef.ZpackdScreenTableType" EntitySet="ZpackdScreenTable" m:HttpMethod="POST" sap:action-for="cds_zdnmfault_serdef.ZpackdScreenTableType">
+                    <Parameter Name="Code" Type="Edm.String" Mode="In" MaxLength="3" Nullable="true" sap:label="New Code"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="ResultIsActiveEntity" Type="Edm.Boolean" Mode="In" Nullable="true" sap:label="Result is active"/>
+                </FunctionImport>
+                <FunctionImport Name="ZpackdScreenTablAllActivate" ReturnType="cds_zdnmfault_serdef.ZpackdScreenTablAllType" EntitySet="ZpackdScreenTablAll" m:HttpMethod="POST" sap:action-for="cds_zdnmfault_serdef.ZpackdScreenTablAllType">
+                    <Parameter Name="SingletonID" Type="Edm.Byte" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                </FunctionImport>
+                <FunctionImport Name="ZpackdScreenTablAllDiscard" ReturnType="cds_zdnmfault_serdef.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="cds_zdnmfault_serdef.ZpackdScreenTablAllType">
+                    <Parameter Name="SingletonID" Type="Edm.Byte" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                </FunctionImport>
+                <FunctionImport Name="ZpackdScreenTablAllEdit" ReturnType="cds_zdnmfault_serdef.ZpackdScreenTablAllType" EntitySet="ZpackdScreenTablAll" m:HttpMethod="POST" sap:action-for="cds_zdnmfault_serdef.ZpackdScreenTablAllType">
+                    <Parameter Name="SingletonID" Type="Edm.Byte" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="PreserveChanges" Type="Edm.Boolean" Mode="In" Nullable="true" sap:label="TRUE"/>
+                </FunctionImport>
+                <FunctionImport Name="ZpackdScreenTablAllPrepare" ReturnType="cds_zdnmfault_serdef.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="cds_zdnmfault_serdef.ZpackdScreenTablAllType">
+                    <Parameter Name="SingletonID" Type="Edm.Byte" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                </FunctionImport>
+                <FunctionImport Name="ZpackdScreenTablAllResume" ReturnType="cds_zdnmfault_serdef.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="cds_zdnmfault_serdef.ZpackdScreenTablAllType">
+                    <Parameter Name="SingletonID" Type="Edm.Byte" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                </FunctionImport>
+                <FunctionImport Name="SelectCustomizingTransptReq" ReturnType="cds_zdnmfault_serdef.ZpackdScreenTablAllType" EntitySet="ZpackdScreenTablAll" m:HttpMethod="POST" sap:action-for="cds_zdnmfault_serdef.ZpackdScreenTablAllType">
+                    <Parameter Name="SingletonID" Type="Edm.Byte" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="TransportRequestID" Type="Edm.String" Mode="In" MaxLength="20" Nullable="true" sap:value-list="standard" sap:label="Customizing Transport Request" sap:quickinfo="Request/Task"/>
+                </FunctionImport>
+            </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="cds_zdnmfault_serdef.cds_zdnmfault_serdef_Entities/ZpackdScreenTablAll" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.DraftRoot">
+                    <Record>
+                        <PropertyValue Property="ActivationAction" String="cds_zdnmfault_serdef.cds_zdnmfault_serdef_Entities/ZpackdScreenTablAllActivate"/>
+                        <PropertyValue Property="DiscardAction" String="cds_zdnmfault_serdef.cds_zdnmfault_serdef_Entities/ZpackdScreenTablAllDiscard"/>
+                        <PropertyValue Property="EditAction" String="cds_zdnmfault_serdef.cds_zdnmfault_serdef_Entities/ZpackdScreenTablAllEdit"/>
+                        <PropertyValue Property="PreparationAction" String="cds_zdnmfault_serdef.cds_zdnmfault_serdef_Entities/ZpackdScreenTablAllPrepare"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DraftEntityCreationDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DraftEntityLastChangeDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_ZpackdScreenTable"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonUpdatableNavigationProperties">
+                            <Collection>
+                                <PropertyPath>to_ZpackdScreenTable</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zdnmfault_serdef.cds_zdnmfault_serdef_Entities/ZpackdScreenTable" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.DraftNode"/>
+                <Annotation Term="Common.DraftActivationVia">
+                    <Collection>
+                        <String>cds_zdnmfault_serdef.cds_zdnmfault_serdef_Entities/ZpackdScreenTablAll</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DraftEntityCreationDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DraftEntityLastChangeDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="RequiredProperties">
+                            <Collection>
+                                <PropertyPath>Code</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonUpdatableNavigationProperties">
+                            <Collection>
+                                <PropertyPath>to_ZpackdScreenTablAll</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zdnmfault_serdef.cds_zdnmfault_serdef_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="cds_zdnmfault_serdef.ZpackdScreenTableType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ChangedAt" Path="LastChangedAt"/>
+                <Annotation Term="Common.CreatedAt" Path="LocalCreatedAt"/>
+                <Annotation Term="Common.CreatedBy" Path="LocalCreatedBy"/>
+            </Annotations>
+            <Annotations Target="cds_zdnmfault_serdef.ZpackdScreenTablAllType/to_ZpackdScreenTable" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Composition"/>
+            </Annotations>
+            <Annotations Target="cds_zdnmfault_serdef.cds_zdnmfault_serdef_Entities/DStd" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zdnmfault_serdef.cds_zdnmfault_serdef_Entities/I_DraftAdministrativeData" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="CreationDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="LastChangeDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zdnmfault_serdef.cds_zdnmfault_serdef_Entities/PlantData" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zdnmfault_serdef.cds_zdnmfault_serdef_Entities/Supplier" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zdnmfault_serdef.cds_zdnmfault_serdef_Entities/fault_code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zdnmfault_serdef.cds_zdnmfault_serdef_Entities/grading_table" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zdnmfault_serdef.cds_zdnmfault_serdef_Entities/mat_stock" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zdnmfault_serdef.cds_zdnmfault_serdef_Entities/operator_data" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zdnmfault_serdef.cds_zdnmfault_serdef_Entities/storage_loc" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zdnmfault_serdef.ZpackdScreenTableType/Code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.Immutable"/>
+            </Annotations>
+            <Annotations Target="cds_zdnmfault_serdef.PlantDataType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeType">
+                    <Record>
+                        <PropertyValue Property="Name" String="Plant"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zdnmfault_serdef.SupplierType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeType">
+                    <Record>
+                        <PropertyValue Property="Name" String="Supplier"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zdnmfault_serdef.storage_locType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeType">
+                    <Record>
+                        <PropertyValue Property="Name" String="StorageLocation"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zdnmfault_serdef.PlantDataType/PlantCategory" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="PlantCategory"/>
+            </Annotations>
+            <Annotations Target="cds_zdnmfault_serdef.mat_stockType/ProductType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="ProductType"/>
+            </Annotations>
+            <Annotations Target="cds_zdnmfault_serdef.ZpackdScreenTablAllType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>SingletonID</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zdnmfault_serdef.cds_zdnmfault_serdef_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Org.OData.Capabilities.V1.BatchSupport">
+                    <Record Type="Org.OData.Capabilities.V1.BatchSupportType">
+                        <PropertyValue Property="ReferencesAcrossChangeSetsSupported" Bool="true"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="https://my405100-api.s4hana.cloud.sap/sap/opu/odata/sap/ZDNMFAULT_SERB/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://my405100-api.s4hana.cloud.sap/sap/opu/odata/sap/ZDNMFAULT_SERB/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
